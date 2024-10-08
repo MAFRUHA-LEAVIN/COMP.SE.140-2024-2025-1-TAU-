@@ -1,0 +1,14 @@
+version: '3'
+services:
+  service1:
+    build: ./service1    # Build from the Dockerfile in the service1 folder
+    ports:
+      - "8199:8199"      # Expose service1 externally on port 8199
+    depends_on:
+      - service2         # Ensure service1 starts after service2
+
+  service2:
+    build: ./service2    # Build from the Dockerfile in the service2 folder
+    expose:
+      - "5000"           # Expose service2 internally on port 5000 (no external access)
+      

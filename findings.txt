@@ -1,0 +1,35 @@
+### Findings on Container Sharing with the Host
+
+Containers are isolated environments that run applications and services. While 
+they offer a level of abstraction and separation from the host operating system, 
+they share several critical resources:
+
+1. **Kernel Sharing**: Containers leverage the host's kernel for process 
+management and system calls. This means that all containers on a host share the 
+same kernel, making them lightweight compared to traditional virtual machines, 
+which require separate operating system instances.
+
+2. **Filesystem**: Each container has its own isolated filesystem created from 
+the container image. However, they can share files with the host and other 
+containers using mounted volumes. This functionality allows for persistent data 
+storage and easy data sharing between containers and the host.
+
+3. **Networking**: Containers communicate over a virtual network and can access 
+external networks. Each container gets its own IP address, and ports can be 
+mapped to the host to allow external access. This capability enables seamless 
+interaction between services running in different containers.
+
+4. **Resource Utilization**: Containers can utilize the host's CPU, memory, and 
+disk space. Docker provides options to limit resource usage, ensuring that no 
+single container can monopolize the host’s resources, promoting fair resource 
+distribution among running containers.
+
+5. **Process Visibility**: While containers run in isolation, they can still 
+execute system commands like `ps` to view their processes. However, they do not 
+have access to processes running outside their environment unless explicitly 
+allowed.
+
+In summary, while containers encapsulate applications for improved management and 
+deployment, they rely on and share many core components with the host system, 
+facilitating efficient resource use and communication.
+

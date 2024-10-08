@@ -1,0 +1,12 @@
+CONTAINER ID   IMAGE                                 COMMAND                  CREATED          STATUS          PORTS                    NAMES
+97cb497c6f13   compse140-2024-2025-1-tau--service1   "python service1.py"     2 minutes ago    Up 2 minutes    0.0.0.0:8199->8199/tcp   compse140-2024-2025-1-tau--service1-1
+aa0a6e2cfbcd   compse140-2024-2025-1-tau--service2   "docker-entrypoint.s…"   2 minutes ago    Up 2 minutes    5000/tcp                 compse140-2024-2025-1-tau--service2-1
+4caf92ffc882   mafruha/event-bus                     "docker-entrypoint.s…"   16 minutes ago   Up 16 minutes                            k8s_event-bus_event-bus-depl-869f59764c-42fs5_default_a9522aae-3ce8-401e-b156-447edf427026_2
+db8df233cccc   5a3c47128078                          "/usr/bin/dumb-init …"   16 minutes ago   Up 16 minutes                            k8s_controller_ingress-nginx-controller-784997fdc7-d9ktq_ingress-nginx_9cb5f822-60eb-42ad-b04f-cef7dfb57faa_3
+5041f7ecdbf1   05ac162c63c6                          "docker-entrypoint.s…"   16 minutes ago   Up 16 minutes                            k8s_posts_posts-depl-8979f6f49-ctr52_default_939e6421-12e2-459b-9cb0-d00c7ae75ef2_2
+NETWORK ID     NAME                                 DRIVER    SCOPE
+b66adb917ee0   bridge                               bridge    local
+4f1a09c97b2b   compse140-2024-2025-1-tau-_default   bridge    local
+15877af13cdd   host                                 host      local
+9b7f5e5cc32e   minikube                             bridge    local
+914977398f40   none                                 null      local

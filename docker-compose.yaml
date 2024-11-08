@@ -1,14 +1,29 @@
-version: '3'
 services:
   service1:
-    build: ./service1    # Build from the Dockerfile in the service1 folder
+    build: ./service1
+    deploy:
+      replicas: 3
     ports:
-      - "8199:8199"      # Expose service1 externally on port 8199
+      - "8199"  # Internal port for Service 1 instances
+    expose:
+      - "8199"
     depends_on:
-      - service2         # Ensure service1 starts after service2
+      - service2
+    environment:
+      - SLEEP_DURATION=2  # Optional: add sleep duration to mimic response delay
 
   service2:
-    build: ./service2    # Build from the Dockerfile in the service2 folder
+    build: ./service2
     expose:
-      - "5000"           # Expose service2 internally on port 5000 (no external access)
-      
+      - "5000"  # Expose Service 2 internally
+
+  nginx:
+    image: nginx:latest
+    ports:
+      - "8198:80"  # Expose NGINX on port 8198
+    depends_on:
+      - service1
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf:ro
+      - ./.htpasswd:/etc/nginx/.htpasswd:ro 
+      - ./index.html:/usr/share/nginx/html/index.html:ro  # HTML file

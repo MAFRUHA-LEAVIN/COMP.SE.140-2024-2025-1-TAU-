@@ -12,6 +12,7 @@ COPY . .
 
 # Install the required Python libraries
 RUN pip install flask requests
+RUN pip install flask requests psutil
 
 # Expose port 8199 for HTTP server
 EXPOSE 8199
